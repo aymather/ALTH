@@ -1,5 +1,8 @@
 function settings = ALTH_init(data)
 
+% Handles
+settings.daq = DaqDeviceIndex;
+
 % General
 if data.training == 0
     settings.general.blocks = 8;
@@ -24,6 +27,8 @@ settings.duration.fhoffset = .05;
 settings.duration.fh1offset = .2;
 settings.duration.fixation = .5;
 settings.duration.post_check = .5;
+settings.duration.delay = .05;
+settings.duration.cue = .2;
 
 % Screen
 [settings.screen.outwindow, settings.screen.outwindowdims] = screenit;

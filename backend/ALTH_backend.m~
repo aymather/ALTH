@@ -31,6 +31,11 @@ glo_welcome(ow);
         else
             side = settings.layout.size.offset;
         end
+
+        % preassign
+        rt = 0;
+        resp = 0;
+        post_resp = 0;
         
         % DRAW STIMULUS
         DrawFormattedText(ow, '+', 'center', 'center', settings.layout.color.text);
@@ -38,7 +43,7 @@ glo_welcome(ow);
         starttime = Screen('Flip', ow);
 
         % Check for Response
-        [trialseq(it,id.rt),trialseq(it,id.resp)] = handle_response_ALTH(settings.daq,trialseq(it,id.deadline)*1000,settings,trialseq,id,it);
+        [trialseq(it,id.rt),trialseq(it,id.resp)] = handle_response_ALTS(settings.daq,trialseq(it,id.deadline)*1000,settings,trialseq,id,it);
 
         % Just in case response happens between functions, handles won't turn
         % off, this is a safety net.
@@ -48,14 +53,14 @@ glo_welcome(ow);
         
         % if there is no response on go trials then display feedback,
         % otherwise just keep checking for .5 seconds.
-        if trialseq(it,id.go) == 1 && trialseq(it,id.resp) == 0
+        if trialseq(it,id.go) == 1 && resp == 0
             DrawFormattedText(settings.screen.outwindow, 'Too Slow!', 'center', 'center', settings.layout.color.feedback);
             Screen('Flip',settings.screen.outwindow);
         else
             % Get back black background
             Screen('FillRect', settings.screen.outwindow, settings.layout.color.bg);
             Screen('Flip', settings.screen.outwindow);
-            [~,post_resp] = handle_response_ALTH_postcheck(settings.daq,500);
+            [~,post_resp] = handle_response_ALTS(settings.daq,500,settings,trialseq,id,it);
         end
         
         % Code Responses

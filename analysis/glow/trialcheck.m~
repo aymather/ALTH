@@ -14,7 +14,7 @@ function trialseq = trialcheck(trialseq,stan)
     it = 1;
     while it < size(trialseq,1)
         
-        if (trialseq(it,stan) == trialseq(it+1,stan) && trialseq(it,stan) + trialseq(it+1,stan) ~= 0) || (trialseq(it,stan) * trialseq(it+1,stan) > 0) || (trialseq(1,stan) == 1) || (trialseq(2,stan) == 1) || (trialseq(3,stan) == 1)
+        if (trialseq(it,stan) == trialseq(it+1,stan) && trialseq(it,stan) + trialseq(it+1,stan) ~= 0) || (trialseq(it,stan) * trialseq(it+1,stan) > 0) || (trialseq(1,stan)))
             trialseq = shuffle_me(trialseq,1);
             it = 1;
         else
