@@ -41,10 +41,6 @@ settings.layout.color.feedback = [255 0 0]; % red
 Screen(settings.screen.outwindow,'TextFont','Arial');
 Screen('TextSize', settings.screen.outwindow, 42);
 
-% Function handles for vibrations
-settings.fh = @(settings) vibrate_handle(settings.daq, 1, 'both', 'fast');
-settings.fh1 = @(settings) vibrate_handle(settings.daq, 0);
-
 % Blockfeedback calculations function handles
 settings.blocktrials = @(trialseq,id,it) trialseq(trialseq(:,id.block) == trialseq(it,id.block),:);
 settings.goTrials = @(blocktrials,id) blocktrials(blocktrials(:,id.go) == 1,:);
