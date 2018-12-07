@@ -10,6 +10,9 @@ id = ALTH_columns;
 % INTRO
 glo_welcome(ow);
 
+% Countdown
+glo_countdown(ow);
+
     % TRIAL LOOP
     for it = 1:size(trialseq,1)
 
