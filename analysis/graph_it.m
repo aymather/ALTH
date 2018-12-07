@@ -1,4 +1,4 @@
-function graph_it(leg, lim, xlab, ylab, values, errors)
+function graph_it(title_, leg, lim, xlab, ylab, values, errors)
 
     
     % This function graphs data with specified error bars
@@ -68,6 +68,7 @@ function graph_it(leg, lim, xlab, ylab, values, errors)
     xlabel(xlab);
     ylabel(ylab);
     ylim([0 lim]);
+    title(title_);
     hold off
     
 end
